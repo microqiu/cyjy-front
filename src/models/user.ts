@@ -1,5 +1,7 @@
 import { queryCurrent, query as queryUsers } from '@/services/user';
 
+import { getCurrentUserInfo } from '@/pages/user/login/service';;
+
 import { Effect } from 'dva';
 import { Reducer } from 'redux';
 
@@ -49,7 +51,7 @@ const UserModel: UserModelType = {
       });
     },
     *fetchCurrent(_, { call, put }) {
-      const response = yield call(queryCurrent);
+      const response = yield call(getCurrentUserInfo);
       yield put({
         type: 'saveCurrentUser',
         payload: response,
@@ -74,8 +76,8 @@ const UserModel: UserModelType = {
         ...state,
         currentUser: {
           ...state.currentUser,
-          notifyCount: action.payload.totalCount,
-          unreadCount: action.payload.unreadCount,
+          notifyCount: 0,
+          unreadCount: 0,
         },
       };
     },

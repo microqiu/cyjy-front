@@ -84,16 +84,23 @@ export default {
           path: '/user',
           component: '../layouts/UserLayout',
           routes: [
-            { path: '/user/login', name: 'login', component: './User/Login' },
-            /*
-            { path: '/user/register', name: 'register', component: './User/Register' },
             {
-              path: '/user/register-result',
-              name: 'register.result',
-              component: './User/RegisterResult',
+              path: '/user/login',
+              name: 'login',
+              component: './User/Login',
             },
-            */
-            { path: '/user', redirect: '/user/login' },
+            /*
+      { path: '/user/register', name: 'register', component: './User/Register' },
+      {
+      path: '/user/register-result',
+      name: 'register.result',
+      component: './User/RegisterResult',
+      },
+      */
+            {
+              path: '/user',
+              redirect: '/user/login',
+            },
             {
               component: '404',
             },
@@ -103,8 +110,23 @@ export default {
           path: '/',
           component: '../layouts/BasicLayout',
           Routes: ['src/pages/Authorized'],
-          authority: ['admin', 'user'],
+          //authority: ['admin', 'user'],
           routes: [
+            {
+              //name: 'account.settings',
+              path: '/account/settings',
+              component: './account/settings',
+            },
+            {
+              name: 'settings',
+              path: '/product/settings',
+              component: './product/settings',
+            },
+            {
+              name: '商品管理',
+              path: '/product/list',
+              component: './product/list',
+            },
             {
               path: '/',
               name: 'welcome',
@@ -116,7 +138,7 @@ export default {
             },
           ],
         },
-      ]
+      ],
     },
     {
       component: './404',

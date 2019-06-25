@@ -63,14 +63,14 @@ class Login extends Component<
   };
 
   handleSubmit = (err: any, values: FromDataType) => {
-    const { type } = this.state;
+    //const { type } = this.state;
     if (!err) {
       const { dispatch } = this.props;
       dispatch({
         type: 'userLogin/login',
         payload: {
           ...values,
-          type,
+          //type,
         },
       });
     }
@@ -126,7 +126,7 @@ class Login extends Component<
                 formatMessage({ id: 'user-login.login.message-invalid-credentials' }),
               )}
             <UserName
-              name="userName"
+              name="username"
               placeholder={`${formatMessage({ id: 'user-login.login.userName' })}: admin or user`}
               rules={[
                 {
